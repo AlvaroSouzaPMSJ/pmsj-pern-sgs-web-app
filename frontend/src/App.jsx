@@ -1,122 +1,177 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ROUTES } from "./app/routing/routes.constants.js";
 
-function App() {
-  const [count, setCount] = useState(0)
+// ---
 
+// -------------
+// >>> ADMIN <<<
+// -------------
+import AdminHomeUI from "./features/admin/pages/AdminHomeUI.jsx";
+
+// --------------------------------------------
+// >>> ADMINISTRATIVE-MANAGEMENT-DEPARTMENT <<<
+// --------------------------------------------
+import AdministrativeManagementDepartmentHomeUI from "./features/administrative-management-department/pages/AdministrativeManagementDepartmentHomeUI.jsx";
+import DIRACFormUI from "./features/administrative-management-department/pages/DIRACFormUI.jsx";
+import RHFormUI from "./features/administrative-management-department/pages/RHFormUI.jsx";
+
+// -----------------------------
+// >>> EMERGENCY-AND-URGENCY <<<
+// -----------------------------
+import EmergencyAndUrgentCareHomeUI from "./features/emergency-and-urgency-care-department/pages/EmergencyAndUrgencyCareHomeUI.jsx";
+
+// ----------------------------------------
+// >>> HEALTH-EDUCATION-SUPERINTENDENCY <<<
+// ----------------------------------------
+import HealthEducationDepartmentHomeUI from "./features/health-education-department/pages/HealthEducationDepartmentHomeUI.jsx";
+
+// -------------------------------------
+// >>> HEALTH-SURVEILANCE-DEPARTMENT <<<
+// -------------------------------------
+import HealthSurveillanceDepartmentHomeUI from "./features/health-surveillance-department/pages/HealthSurveillanceDepartmentHomeUI.jsx";
+import VISAFormUI from "./features/health-surveillance-department/pages/VISAFormUI.jsx";
+import VIEPFormUI from "./features/health-surveillance-department/pages/VIEPFormUI.jsx";
+
+// -----------------------------
+// >>> MUNICIPAL-HEALTH-FUND <<<
+// -----------------------------
+import MunicipalHealthFundHomeUI from "./features/muncipal-health-fund/pages/MunicipalHealthFundHomeUI.jsx";
+
+// ---------------------
+// >>> MUNICIPAL-LAB <<<
+// ---------------------
+import MunicipalLaboratoryHomeUI from "./features/municipal-laboratory/pages/MunicipalLaboratoryHomeUI.jsx";
+import LABFormUI from "./features/municipal-laboratory/pages/LABFormUI.jsx";
+
+// ------------------------------
+// >>> PHARMACEUTICAL-SERVICE <<<
+// ------------------------------
+import PharmaceuticalServicesHomeUI from "./features/pharmaceutical-services/pages/PharmaceuticalServicesHomeUI.jsx";
+
+// -------------------------
+// >>> PRIMARY ATTENTION <<<
+// -------------------------
+import PrimaryAttentionHomeUI from "./features/primary-attention/pages/PrimaryAttentionHomeUI.jsx";
+import SyphilisHomeUI from "./features/primary-attention/pages/SyphilisHomeUI.jsx";
+import SBCFormUI from "./features/primary-attention/pages/SBCFormUI.jsx";
+import SBFormUI from "./features/primary-attention/pages/SBFormUI.jsx";
+import SDMFormUI from "./features/primary-attention/pages/SDMFormUI.jsx";
+import SISABFormUI from "./features/primary-attention/pages/SISABFormUI.jsx";
+import SdCFormUI from "./features/primary-attention/pages/SdCFormUI.jsx";
+import TABFormUI from "./features/primary-attention/pages/TABFormUI.jsx";
+import PAFormUI from "./features/primary-attention/pages/PAFormUI.jsx";
+import CaseReportSyphilisFormUI from "./features/primary-attention/pages/CaseReportSyphilisFormUI.jsx";
+
+// ----------------------------------
+// >>> REGULATORY SUPERINTENDENCY <<<
+// ----------------------------------
+import RegulatorySuperintendencyHomeUI from "./features/regularoty-superintendency/pages/RegulatorySuperintendencyHomeUI.jsx";
+
+// ------------
+// >>> SAMU <<<
+// ------------
+import SAMUHomeUI from "./features/samu/pages/SAMUHomeUI.jsx";
+import SAMUFormUI from "./features/samu/pages/SAMUFormUI.jsx";
+
+// -----------------------------
+// >>> SPECIALIZED ATTENTION <<<
+// -----------------------------
+
+// ----------------------------
+// >>> STRATEGIC DEPARTMENT <<<
+// ----------------------------
+
+// -------------------
+// >>> SYSTEM HOME <<<
+// -------------------
+
+// -------------
+// >>> USERS <<<
+// -------------
+
+const App = () => {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <BrowserRouter>
+      <Routes>
+        {/* ADMIN */}
+        <Route path={ROUTES.ADMIN_HOME_UI} element={<AdminHomeUI />} />
 
-      <div className="ticks"></div>
+        {/* ADMINISTRATIVE-MANAGEMENT-DEPARTMENT */}
+        <Route
+          path={ROUTES.ADMINISTRATIVE_MANAGEMENT_DEPTO_HOME_UI}
+          element={<AdministrativeManagementDepartmentHomeUI />}
+        />
+        <Route path={ROUTES.DIRAC_FORM_UI} element={<DIRACFormUI />} />
+        <Route path={ROUTES.RH_FORM_UI} element={<RHFormUI />} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        {/* EMERGENCY-AND-URGENCY */}
+        <Route
+          path={ROUTES.EMERGENCY_AND_URGENCY_HOME_UI}
+          element={<EmergencyAndUrgentCareHomeUI />}
+        />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
-}
+        {/* HEALTH-EDUCATION-SUPERINTENDENCY */}
+        <Route
+          path={ROUTES.HEALTH_EDUCATION_DEPARTMENT_HOME_UI}
+          element={<HealthEducationDepartmentHomeUI />}
+        />
 
-export default App
+        {/* HEALTH-SURVEILANCE-DEPARTMENT */}
+        <Route
+          path={ROUTES.HEALTH_SURVEILLANCE_DEPARTMENT_HOME_UI}
+          element={<HealthSurveillanceDepartmentHomeUI />}
+        />
+        <Route path={ROUTES.VISA_FORM_UI} element={<VISAFormUI />} />
+        <Route path={ROUTES.VIEP_FORM_UI} element={<VIEPFormUI />} />
+
+        {/* MUNNICIPAL-HEALTH-FUND */}
+        <Route
+          path={ROUTES.MUNICIPAL_HEALTH_FUND_HOME_UI}
+          element={<MunicipalHealthFundHomeUI />}
+        />
+
+        {/* MUNICIPAL-LAB */}
+        <Route
+          path={ROUTES.MUNICIPAL_LAB_HOME_UI}
+          element={<MunicipalLaboratoryHomeUI />}
+        />
+        <Route path={ROUTES.LAB_FORM_UI} element={<LABFormUI />} />
+
+        {/* PHARMA-SERVICES */}
+        <Route
+          path={ROUTES.PHARMACEUTICAL_SERVICE_HOME_UI}
+          element={<PharmaceuticalServicesHomeUI />}
+        />
+
+        {/* PRIMARY ATTENTION */}
+        <Route
+          path={ROUTES.PRIMARY_ATTENTION_HOME_UI}
+          element={<PrimaryAttentionHomeUI />}
+        />
+        <Route path={ROUTES.SYPHILIS_HOME_UI} element={<SyphilisHomeUI />} />
+        <Route path={ROUTES.SBC_FORM_UI} element={<SBCFormUI />} />
+        <Route path={ROUTES.SB_FORM_UI} element={<SBFormUI />} />
+        <Route path={ROUTES.SDM_FORM_UI} element={<SDMFormUI />} />
+        <Route path={ROUTES.SISAB_FORM_UI} element={<SISABFormUI />} />
+        <Route path={ROUTES.SdC_FORM_UI} element={<SdCFormUI />} />
+        <Route path={ROUTES.TAB_FORM_UI} element={<TABFormUI />} />
+        <Route path={ROUTES.PA_FORM_UI} element={<PAFormUI />} />
+        <Route path={ROUTES.CASE_REPORT_SYPHILIS_FORM_UI} element={<CaseReportSyphilisFormUI />} />
+
+        {/* REGULATORY-SUPERINTENDENCY */}
+        <Route path={ROUTES.REGULATORY_SUPERINTENDENCY_HOME_UI} element={<RegulatorySuperintendencyHomeUI />} />
+
+        {/* SAMU */}
+        <Route path={ROUTES.SAMU_HOME_UI} element={<SAMUHomeUI />} />
+        <Route path={ROUTES.SAMU_FORM_UI} element={<SAMUFormUI />} />
+
+
+        {/*  */}
+
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
