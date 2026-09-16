@@ -77,14 +77,23 @@ import SAMUFormUI from "./features/samu/pages/SAMUFormUI.jsx";
 // -----------------------------
 // >>> SPECIALIZED ATTENTION <<<
 // -----------------------------
+import SpecializedAttentionHomeUI from "./features/specialized-attention/pages/SpecializedAttentionHomeUI.jsx";
+import AEFormUI from "./features/specialized-attention/pages/AEFormUI.jsx";
+
 
 // ----------------------------
 // >>> STRATEGIC DEPARTMENT <<<
 // ----------------------------
+import StrategicDepartmentHomeUI from "./features/strategic-department/pages/StrategicDepartmentHomeUI.jsx";
+import DCNTFormUI from "./features/strategic-department/pages/DCNTFormUI.jsx";
+import PSEFormUI from "./features/strategic-department/pages/PSEFormUI.jsx";
+import SMPFormUI from "./features/strategic-department/pages/SMPFormUI.jsx";
+
 
 // -------------------
 // >>> SYSTEM HOME <<<
 // -------------------
+import SystemHomePageUI from "./features/system-home/pages/SystemHomePageUI.jsx";
 
 // -------------
 // >>> USERS <<<
@@ -167,7 +176,18 @@ const App = () => {
         <Route path={ROUTES.SAMU_FORM_UI} element={<SAMUFormUI />} />
 
 
-        {/*  */}
+        {/* SPECIALIZED ATTENTION */}
+        <Route path={ROUTES.SPECIALIZED_ATTENTION_HOME_UI} element={<SpecializedAttentionHomeUI />} />
+        <Route path={ROUTES.AE_FORM_UI} element={<AEFormUI />} />
+
+        {/* STRATEGIC DEPARTMENT */}
+        <Route path={ROUTES.DCNT_FORM_UI} element={<DCNTFormUI />} />
+        <Route path={ROUTES.SMP_FORM_UI} element={<SMPFormUI />} />
+        <Route path={ROUTES.PSE_FORM_UI} element={<PSEFormUI />} />
+        <Route path={ROUTES.STRATEGIC_DEPARTMENT_HOME_UI} element={<StrategicDepartmentHomeUI />} />
+
+        {/* SYSTEM */}
+        <Route path={ROUTES.SYSTEM_HOME} element={<SystemHomePageUI />} />
 
       </Routes>
     </BrowserRouter>
