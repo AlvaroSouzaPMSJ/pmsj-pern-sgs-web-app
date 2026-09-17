@@ -27,9 +27,8 @@ import {
   User,
   Circle,
 } from "lucide-react";
-
-import LoginPopUpUI from "../../../auth/components/LoginPopUpUI";
-import RegisterPopUpUI from "../../../auth/components/RegisterPopUpUI";
+import LoginPopUpUI from "../../auth/componets/LoginPopUpUI";
+import RegisterPopUpUI from "../../auth/componets/RegisterPopUpUI";
 
 const SystemHomePageUI = () => {
   const navigate = useNavigate();
@@ -40,6 +39,7 @@ const SystemHomePageUI = () => {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
   return (
     <main className="font-sans text-gray-800 overflow-x-hidden">
       <div>

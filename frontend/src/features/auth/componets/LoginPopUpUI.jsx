@@ -1,8 +1,8 @@
 import { Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import logoPmsj3 from "../../../assets/logoPmsj3.png";
 import { useAuth } from "../hooks/useAuth.js";
+import { Dialog, Transition } from "@headlessui/react";
 
 const LoginPopUpUI = ({ isOpen, setIsOpen }) => {
   // The hook handles the form logic and navigation
