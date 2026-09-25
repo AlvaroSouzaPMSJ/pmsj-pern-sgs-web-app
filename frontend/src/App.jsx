@@ -98,6 +98,7 @@ import SystemHomePageUI from "./features/system-home/pages/SystemHomePageUI.jsx"
 // -------------
 // >>> USERS <<<
 // -------------
+import  UserFormUI from "./features/users/pages/UserFormUI.jsx";
 
 const App = () => {
   return (
@@ -190,7 +191,12 @@ const App = () => {
         <Route path={ROUTES.SYSTEM_HOME} element={<SystemHomePageUI />} />
 
         {/* USERS */}
-        
+        <Route path={ROUTES.USER_FORM_UI} element={<UserFormUI />} />
+
+
+
+
+
       </Routes>
     </BrowserRouter>
   );

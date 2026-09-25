@@ -68,7 +68,7 @@ const AdminHomeUI = () => {
                   {/*  */}
                   <div
                     className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md hover:border-gray-300 cursor-pointer"
-                    onClick={() => navigate(ROUTES.USER_FORM_UII)}
+                    onClick={() => navigate(ROUTES.USER_FORM_UI)}
                   >
                     <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
                       Usuário
@@ -79,7 +79,7 @@ const AdminHomeUI = () => {
                   {/*  */}
                   <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md hover:border-gray-300 cursor-pointer">
                     <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Local
+                      Local {"(to do)"}
                     </p>
                   </div>
                   {/*  */}
@@ -87,7 +87,7 @@ const AdminHomeUI = () => {
                   {/*  */}
                   <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md hover:border-gray-300 cursor-pointer">
                     <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Material
+                      Material {"(to do)"}
                     </p>
                   </div>
                   {/*  */}
@@ -95,7 +95,7 @@ const AdminHomeUI = () => {
                   {/*  */}
                   <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md hover:border-gray-300 cursor-pointer">
                     <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Instrumento
+                      Instrumento {"(to do)"}
                     </p>
                   </div>
                   {/*  */}
@@ -103,7 +103,7 @@ const AdminHomeUI = () => {
                   {/*  */}
                   <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md hover:border-gray-300 cursor-pointer">
                     <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Equipamento
+                      Equipamento {"(to do)"}
                     </p>
                   </div>
                   {/*  */}
