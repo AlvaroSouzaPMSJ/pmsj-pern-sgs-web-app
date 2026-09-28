@@ -1,6 +1,11 @@
-import { UserResponseDTO } from "../dto/userResponse.dto.js";
+import { userResponseDto } from "../dto/userResponse.dto";
 
-export const toUserResponseDTO = (userDocument) => {
-  if (!userDocument) return null;
-  return new UserResponseDTO(userDocument);
+export const userMapper = {
+  toResponse(user) {
+    if (!user) return null;
+    return userResponseDto(user);
+  },
+  toResponseList(users) {
+    return users.map(userResponseDto);
+  }
 };
