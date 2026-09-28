@@ -1,18 +1,31 @@
 import pg from "pg";
-import dotenv from "dotenv";
+import env from "./env.js";
+import logger from "./logger.js";
 
-dotenv.config();
+const { Pool } = pg;
 
-const pool = new Pool({
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  database: process.env.DB_NAME,
+export const pool = new Pool({
+  connectionString: env.databaseUrl,
+  max: 20,
+  idleTimeoutMillis: 30_000,
+  connectionTimeoutMillis: 5_000,
+  // ssl: env.nodeEnv === "production" ? { rejectUnauthorized: false } : false,
 });
 
-pool.connect()
-  .then(() => console.log("Connect to PostgreSQL"))
-  .catch((err) => console.error("Database connection error", err.stack));
+pool.on("error", (err) => logger.error("Unexpected PG pool error", err));
+
+export async function connectDB() {
+  const client = await pool.connect();
+  try {
+    await client.query("SELECT 1");
+    logger.info("PostgreSQL connected");
+  } finally {
+    client.release();
+  }
+}
+
+export async function closeDB() {
+  await pool.end();
+}
 
 export default pool;
