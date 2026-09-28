@@ -1,6 +1,5 @@
 import "dotenv/config";
 import app from "./app.js";
-import connectDB from "./config/mongodb.js";
 
 // safety handlers
 process.on("unhandledRejection", (err) => {
