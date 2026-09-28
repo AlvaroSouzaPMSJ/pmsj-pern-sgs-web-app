@@ -10,9 +10,9 @@ import logger from "./config/logger.js";
 import errorHandler from "./middleware/error/errorHandler.js";
 import mongoSanitize from "./middleware/sanitize/mongoSanitize.js"
 
-//-------
-// ROUTES
-//-------
+//--------------
+// ROUTES-STARTS
+//--------------
 
 // AUTH
 import authRoutes from "./features/auth/routes/auth.route.js"
@@ -20,11 +20,9 @@ import authRoutes from "./features/auth/routes/auth.route.js"
 // USER
 import usersRoutes from "./features/users/routes/user.routes.js";
 
-
-
-
-
-// ---
+//------------
+// ROUTES-ENDS
+//------------
 
 const app = express();
 
