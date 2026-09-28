@@ -1,12 +1,9 @@
-export class UserResponseDTO {
-  constructor(user) {
-    this.id = user._id;
-    this.name = user.name;
-    this.email = user.email;
-    this.cpf = user.cpf;
-    this.phone = user.phone;
-    this.role = user.role;
-    this.createdAt = user.createdAt;
-    this.updatedAt = user.updatedAt;
-  }
-}
+export const userResponseDto = (user) => ({
+  id: user.id,
+  fullName: user.fullName,
+  email: user.email,
+  role: user.role,
+  isActive: user.isActive,
+  createdAt: user.createdAt,
+  updatedAt: user.updatedAt,
+});
