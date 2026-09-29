@@ -1,24 +1,61 @@
-import { userService } from "../services/user.service.js";
-import { UserAlreadyExistsError } from "../errors/user.errors.js";
+import { userService } from "../services/user.sevice";
+import { userMapper } from "../mappers/user.mapper";
 
 export const userController = {
-  create: async (req, res, next) => {
+  async register(req, res, next) {
     try {
-      console.log("🚨 [CONTROLLER] req.validatedBody is:", req.validatedBody);
-      const result = await userService.createUser(req.validatedBody);
-      return res.status(201).json({
+      const user = await userService.register(req.body);
+      res.status(201).json({
+        success: true, data: userMapper.toResponse(user)
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+  async login(req, res, next) {
+    try {
+      const { user, token } = await userService.login(req.body);
+      res.status(200).json({
+        sucess: true,
+        data: { user: userMapper.toResponse(user), token }
+      });
+    } catch (error) {
+      next(err);
+    }
+  },
+  async getAll(req, res, next) {
+    try {
+      const users = await userService.getUsers();
+      res.status(200).json({  })
+    } catch (error) {
+      next(err);
+    }
+  },
+  async getById() {
+    try {
+      const user = await userService.getUserById(req.params.id);
+      res.status(200).json({
         success: true,
-        message: "Usuário cadastrado com sucesso",
-        data: result
+        data: userMapper.toResponse(user)
       })
     } catch (error) {
-      if (error instanceof UserAlreadyExistsError) {
-        return res.status(error.statusCode).json({
-          success: false,
-          error: error.message
-        });
-      }
-      next(error);
+      next(err)
     }
-  }
-};
+  },
+  async update(req, res, next) {
+    try {
+      const user = await userService.updatedUser(req.params.id, req.body);
+      res.status(200).json({ success: true, data: userMapper.toResponse(user) });
+    } catch (error) {
+      next(err);
+    }
+  },
+  async remove(req, res, next) {
+    try {
+      await userService.deleteUser(req.params.id);
+      res.status(204).send();
+    } catch (error) {
+      next(err);
+    }
+  },
+}
