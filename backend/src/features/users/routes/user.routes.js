@@ -1,14 +1,18 @@
 import { Router } from "express";
-import { validateUserRegistration } from "../middlewares/validateUser.middleware.js"
-import { userController } from "../controllers/user.controller.js"
+import { userController } from "../controllers/user.controller";
+import { validate } from "../../../middleware/validate.js";
+import { registerSchema, loginSchema, updateUserSchema } from "../validations/user.validation.js";
 
-const usersRoutes = Router();
+const router = Router();
 
-usersRoutes.post("/", validateUserRegistration, userController.create);
-usersRoutes.get("/", protect, restrictTo("admin"), userController.getAll);
+router.post('/register', validate(registerSchema), userController.register);
+router.post('/login', validate(loginSChema), userController.login);
 
+router.use(requireAuth);
 
-// GET /api/users/:id (You'd add a getById, etc.)
-// router.get('/:id', authMiddleware, userController.getOne);
+router.get('/', userController.getAll);
+router.get('/:id', userController.getById);
+router.patch('/:id', validate(updateUserSchema), userController.update);
+router.delete('/:id', userController.remove);
 
-export default usersRoutes;
+export default router;
