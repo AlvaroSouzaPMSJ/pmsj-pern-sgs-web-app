@@ -8,7 +8,7 @@ import hpp from "hpp";
 import env from "./config/env.js";
 import logger from "./config/logger.js";
 import errorHandler from "./middleware/error/errorHandler.js";
-import mongoSanitize from "./middleware/sanitize/mongoSanitize.js"
+import bodySanitize from "./middleware/sanitize/bodySanitize.js";
 
 //--------------
 // ROUTES-STARTS
@@ -18,7 +18,7 @@ import mongoSanitize from "./middleware/sanitize/mongoSanitize.js"
 import authRoutes from "./features/auth/routes/auth.route.js"
 
 // USER
-import usersRoutes from "./features/users/routes/user.routes.js";
+import { userRoutes } from "./features/users/index.js";
 
 //------------
 // ROUTES-ENDS
@@ -55,7 +55,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // 3. SANITIZE
-app.use(mongoSanitize);
+app.use(bodySanitize);
 app.use(hpp());
 
 // 4. PERFORMANCE
@@ -63,7 +63,7 @@ app.use(compression());
 
 // 5. ROUTES
 app.use("/api/auth", authRoutes)
-app.use("/api/users", usersRoutes)
+app.use("/api/users", userRoutes)
 
 // 6. ERROR HANDLER (KEEP IT ALWAYS LAST)
 app.use(errorHandler);
