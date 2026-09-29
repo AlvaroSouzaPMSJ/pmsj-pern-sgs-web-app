@@ -5,67 +5,64 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import rateLimit from "express-rate-limit";
 import hpp from "hpp";
+
 import env from "./config/env.js";
 import logger from "./config/logger.js";
 import errorHandler from "./middleware/error/errorHandler.js";
-import bodySanitize from "./middleware/sanitize/bodySanitize.js";
-
-//--------------
-// ROUTES-STARTS
-//--------------
-
-// AUTH
-import authRoutes from "./features/auth/routes/auth.route.js"
-
-// USER
 import { userRoutes } from "./features/users/index.js";
-
-//------------
-// ROUTES-ENDS
-//------------
 
 const app = express();
 
-// 1. SECURITY MIDDLEWARES
-app.use(helmet());
+// Trust proxy (needed behind nginx / Heroku / Render / etc.)
+app.set("trust proxy", 1);
 
+// ── Security ────────────────────────────────────────────
+app.use(helmet());
 app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
-      if (env.clientUrls.includes(origin)) {
-        return callback(null, true);
-      }
+      if (env.clientUrls.includes(origin)) return callback(null, true);
       return callback(new Error("CORS not allowed"));
     },
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-  }),
+  })
 );
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-});
-app.use(limiter);
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+  })
+);
 
-// 2. PARSERS
-app.use(express.json());
+// ── Parsers ─────────────────────────────────────────────
+app.use(express.json({ limit: "10kb" }));
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
 
-// 3. SANITIZE
-app.use(bodySanitize);
+// ── Sanitize ────────────────────────────────────────────
 app.use(hpp());
 
-// 4. PERFORMANCE
+// ── Performance ─────────────────────────────────────────
 app.use(compression());
 
-// 5. ROUTES
-app.use("/api/auth", authRoutes)
-app.use("/api/users", userRoutes)
+// ── Health ──────────────────────────────────────────────
+app.get("/health", (_req, res) => {
+  res.json({ ok: true, uptime: process.uptime() });
+});
 
-// 6. ERROR HANDLER (KEEP IT ALWAYS LAST)
+// ── Routes ──────────────────────────────────────────────
+app.use("/api/users", userRoutes);
+
+// ── 404 ─────────────────────────────────────────────────
+app.use((req, _res, next) => {
+  const err = new Error(`Not found: ${req.originalUrl}`);
+  err.status = 404;
+  next(err);
+});
+
+// ── Error handler (LAST) ────────────────────────────────
 app.use(errorHandler);
 
 export default app;

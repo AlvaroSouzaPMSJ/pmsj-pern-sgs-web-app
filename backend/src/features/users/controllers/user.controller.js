@@ -1,5 +1,5 @@
-import { userService } from "../services/user.sevice";
-import { userMapper } from "../mappers/user.mapper";
+import { userService } from "../services/user.service.js";
+import { userMapper } from "../mappers/user.mapper.js";
 
 export const userController = {
   async register(req, res, next) {
