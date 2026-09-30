@@ -1,4 +1,4 @@
-import { userResponseDto } from "../dto/userResponse.dto";
+import { userResponseDto } from "../dto/userResponse.dto.js";
 
 export const userMapper = {
   toResponse(user) {
