@@ -9,13 +9,12 @@ let server;
 // These catch things that escape Express entirely.
 
 process.on("unhandledRejection", (reason) => {
-  logger.fatal({ reason }, "Unhandled Rejection");
-  // Give in-flight requests a chance to finish before dying.
+  logger.error({ reason }, "Unhandled Rejection");
   shutdown("unhandledRejection", 1);
 });
 
 process.on("uncaughtException", (err) => {
-  logger.fatal({ err }, "Uncaught Exception");
+  logger.error({ err }, "Uncaught Exception");
   shutdown("uncaughtException", 1);
 });
 
@@ -63,13 +62,11 @@ async function startServer() {
     await connectDB();
 
     server = app.listen(env.port, () => {
-      logger.info(
-        `Server listening on port ${env.port} (${env.nodeEnv})`,
-      );
+      logger.info(`Server listening on port ${env.port} (${env.nodeEnv})`);
     });
 
     server.on("error", (err) => {
-      logger.fatal({ err }, "HTTP server error");
+      logger.error({ err }, "HTTP server error");
       shutdown("server.error", 1);
     });
   } catch (err) {
