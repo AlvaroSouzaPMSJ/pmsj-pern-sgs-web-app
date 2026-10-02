@@ -9,6 +9,9 @@ let server;
 // These catch things that escape Express entirely.
 
 process.on("unhandledRejection", (reason) => {
+  console.error("=== RAW UNHANDLED REJECTION ===");
+  console.error(reason);
+  if (reason instanceof Error) console.error(reason.stack);
   logger.error({ reason }, "Unhandled Rejection");
   shutdown("unhandledRejection", 1);
 });
@@ -26,6 +29,13 @@ async function shutdown(signal, exitCode = 0) {
   isShuttingDown = true;
 
   logger.info({ signal }, "Shutting down...");
+
+  if (server) {
+    server.closeAllConnections();
+    await new Promise((resolve, reject) => {
+      server.close((err) => (err ? reject(err) : resolve()));
+    });
+  }
 
   // Force-exit if shutdown hangs (e.g. a stuck DB connection).
   const forceExit = setTimeout(() => {

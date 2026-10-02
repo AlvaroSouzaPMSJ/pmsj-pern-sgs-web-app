@@ -3,13 +3,17 @@ import jwt from "jsonwebtoken";
 import { userRepository } from "../repository/user.repository.js";
 import env from "../../../config/env.js";
 
+function httpError(status, message) {
+  const err = new Error(message);
+  err.status = status;
+  return err;
+}
+
 export const userService = {
   async register({ fullName, email, password }) {
     const existing = await userRepository.findByEmail(email);
     if (existing) {
-      const error = new Error('Email already in use');
-      error.status = 409;
-      throw error;
+      throw httpError(409, "Email already in use");
     }
     const passwordHash = await bcrypt.hash(password, 10);
     return await userRepository.create({ fullName, email, passwordHash });
@@ -18,19 +22,15 @@ export const userService = {
   async login({ email, password }) {
     const user = await userRepository.findByEmail(email);
     if (!user || !user.isActive) {
-      const error = new Error('Invalid credentials');
-      error.status = 401;
-      throw error;
+      throw httpError(401, "Invalid credentials");
     }
     const validPassword = await bcrypt.compare(password, user.passwordHash);
     if (!validPassword) {
-      const error = new Error('Invalid credentials');
-      error.status = 401;
-      throw error;
+      throw httpError(401, "Invalid credentials");
     }
     const token = jwt.sign(
       { id: user.id, role: user.role },
-      error.auth.jwtSecret,
+      env.auth.jwtSecret,
       { expiresIn: env.auth.jwtExpiresIn }
     );
     return { user, token };
@@ -43,14 +43,12 @@ export const userService = {
   async getUserById(id) {
     const user = await userRepository.findById(id);
     if (!user) {
-      const error = new Error('User not found');
-      error.status = 404;
-      throw error;
+      throw httpError(404, "User not found");
     }
     return user;
   },
 
-  async updatedUser(id, data) {
+  async updateUser(id, data) {
     await this.getUserById(id);
     return await userRepository.update(id, data);
   },
