@@ -1,12 +1,14 @@
+// frontend/src/features/users/api/userApi.js
 import axios from "axios";
+import { useUserStore } from "../store/user.store.js";
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
-  withCredentials: true,
 });
 
+// Attach token on every request, pulled from the Zustand store
 apiClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem("accessToken");
+  const token = useUserStore.getState().token;
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -15,7 +17,7 @@ apiClient.interceptors.request.use((config) => {
 
 export const userApi = {
   createUser: async (formData) => {
-    // Map form field names to backend field names
+    // Map form field names → backend field names
     const payload = {
       fullName: formData.name,
       email: formData.email,
@@ -24,32 +26,34 @@ export const userApi = {
       phone: formData.phone,
       role: formData.role,
     };
-    const response = await apiClient.post("/users/register", payload);
-    return response.data;
+    const { data } = await apiClient.post("/users/register", payload);
+    return data;
   },
 
   login: async ({ email, password }) => {
-    const response = await apiClient.post("/users/login", { email, password });
-    return response.data;
+    const { data } = await apiClient.post("/users/login", { email, password });
+    return data;
   },
 
   getAllUsers: async () => {
-    const response = await apiClient.get("/users");
-    return response.data;
+    const { data } = await apiClient.get("/users");
+    return data;
   },
 
   getUserById: async (id) => {
-    const response = await apiClient.get(`/users/${id}`);
-    return response.data;
+    const { data } = await apiClient.get(`/users/${id}`);
+    return data;
   },
 
-  updateUser: async (id, data) => {
-    const response = await apiClient.patch(`/users/${id}`, data);
-    return response.data;
+  updateUser: async (id, payload) => {
+    const { data } = await apiClient.patch(`/users/${id}`, payload);
+    return data;
   },
 
   deleteUser: async (id) => {
-    const response = await apiClient.delete(`/users/${id}`);
-    return response.data;
+    const { data } = await apiClient.delete(`/users/${id}`);
+    return data;
   },
 };
+
+export { apiClient };

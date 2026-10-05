@@ -1,5 +1,6 @@
-export { default as UserFormUII } from "./pages/UserFormUII.jsx";
-export { default as LoginPopUpUI } from "./components/LoginPopUpUI.jsx";
-export { default as RegisterPopUpUI } from "./components/RegisterPopUpUI.jsx";
+export { default as RegisterPage } from "./pages/RegisterPage.jsx";
+export { default as LoginPage } from "./pages/LoginPage.jsx";
+
 export { userApi } from "./api/userApi.js";
-export { useUserStore } from "./store/userStore.js";
+export { useUserStore, selectIsAuthenticated } from "./store/user.store.js";
+export { USER_ROLES, USER_ROLE_LABELS } from "./constants/userRoles.js";
