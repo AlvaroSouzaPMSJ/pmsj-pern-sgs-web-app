@@ -18,3 +18,9 @@ export { useCaseReportStore } from "./store/caseReport.store.js";
 export { default as SaudeBucalPage } from "./pages/SaudeBucalPage.jsx";
 export { useSaudeBucalStore } from "./store/saudeBucal.store.js";
 export { saudeBucalApi } from "./api/saudeBucalApi.js";
+
+
+export { default as TabagismoPage } from "./pages/TabagismoPage.jsx";
+export { useTabagismoStore } from "./store/tabagismo.store.js";
+export { tabagismoApi } from "./api/tabagismoApi.js";
+
