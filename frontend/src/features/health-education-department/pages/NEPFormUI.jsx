@@ -2,9 +2,9 @@ import { useState, useCallback } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Footer from "../../../../../app/layouts/Footer";
-import GNavbar from "../../../../../app/layouts/GNavbar";
-import { ROUTES } from "../../../../../app/routing/routes.constants";
+import Footer from "../../../app/layouts/Footer";
+import GNavbar from "../../../app/layouts/GNavbar";
+import { ROUTES } from "../../../app/routing/routes.constants";
 
 // CONSTANTS
 

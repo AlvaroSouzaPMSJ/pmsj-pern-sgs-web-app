@@ -74,29 +74,7 @@ const MunicipalLaboratoryHomeUI = () => {
                   </div>
                   {/*  */}
 
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 bg-green-900 hover:shadow-md hover:border-white cursor-pointer">
-                    <p className="flex items-center justify-center text-white text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
 
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 hover:shadow-md cursor-pointer hover:bg-gray-100">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
-
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 hover:shadow-md cursor-pointer hover:bg-gray-100">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Lorem
-                    </p>
-                  </div>
-                  {/*  */}
                 </div>
               </div>
             </div>

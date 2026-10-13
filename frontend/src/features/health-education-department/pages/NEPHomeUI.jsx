@@ -10,9 +10,9 @@ import {
 } from "lucide-react";
 
 import { Link, useNavigate } from "react-router-dom";
-import { ROUTES } from "../../../../../app/routing/routes.constants";
-import Footer from "../../../../../app/layouts/Footer";
-import GNavbar from "../../../../../app/layouts/GNavbar";
+import Footer from "../../../app/layouts/Footer";
+import GNavbar from "../../../app/layouts/GNavbar";
+import { ROUTES } from "../../../app/routing/routes.constants";
 
 const NEPHomeUI = () => {
   //

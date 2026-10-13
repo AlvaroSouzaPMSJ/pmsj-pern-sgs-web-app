@@ -89,21 +89,7 @@ const AdministrativeManagementDepartmentHomeUI = () => {
                   </div>
                   {/*  */}
 
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 hover:shadow-md cursor-pointer bg-white">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
 
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 hover:shadow-md cursor-pointer bg-white">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Lorem
-                    </p>
-                  </div>
-                  {/*  */}
                 </div>
               </div>
             </div>

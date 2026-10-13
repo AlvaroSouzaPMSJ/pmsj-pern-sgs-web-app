@@ -23,7 +23,7 @@ const ACTIVE_ICONS = {
   "/administrative_management_depto/home": <DoorOpen size={20} />,
   "/strategic_department/home": <DoorOpen size={20} />,
   "/emergency_and_urgency/home": <DoorOpen size={20} />,
-  "/health_education_superintendency/home": <DoorOpen size={20} />,
+  "/health_education_department/home": <DoorOpen size={20} />,
   "/health_surveillance_department/home": <DoorOpen size={20} />,
   "/municipal_laboratory/home": <DoorOpen size={20} />,
   "/municipal_health_fund/home": <DoorOpen size={20} />,
@@ -39,7 +39,7 @@ const INACTIVE_ICONS = {
   "/administrative_management_depto/home": <DoorClosed size={20} />,
   "/strategic_department/home": <DoorClosed size={20} />,
   "/emergency_and_urgency/home": <DoorClosed size={20} />,
-  "/health_education_superintendency/home": <DoorClosed size={20} />,
+  "/health_education_department/home": <DoorClosed size={20} />,
   "/health_surveillance_department/home": <DoorClosed size={20} />,
   "/municipal_laboratory/home": <DoorClosed size={20} />,
   "/municipal_health_fund/home": <DoorClosed size={20} />,
@@ -87,7 +87,7 @@ const MENU_ITEMS = [
   },
   {
     label: "Superintendência de Educação em Saúde",
-    path: "/health_education_superintendency/home",
+    path: "/health_education_department/home",
   },
   {
     label: "Superintendência de Regulação",

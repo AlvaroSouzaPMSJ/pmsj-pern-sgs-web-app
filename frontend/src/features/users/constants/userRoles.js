@@ -1,11 +1,11 @@
 // frontend/src/features/users/constants/userRoles.js
 export const USER_ROLES = {
   ADMIN: "admin",
-  MANAGER: "manager",
-  DOCTOR: "doctor",
-  NURSE: "nurse",
-  RECEPTIONIST: "receptionist",
-  USER: "user",
+  MANAGER: "gestor",
+  DOCTOR: "medico",
+  NURSE: "enfermeiro",
+  RECEPTIONIST: "recepcionista",
+  USER: "usuario",
 };
 
 // Display labels (Portuguese UI, English keys)

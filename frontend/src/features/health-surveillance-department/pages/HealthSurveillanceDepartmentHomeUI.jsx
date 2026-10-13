@@ -94,30 +94,6 @@ const HealthSurveillanceDepartmentHomeUI = () => {
                     </p>
                   </div>
                   {/*  */}
-
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md cursor-pointer">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
-
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md cursor-pointer">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
-
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md cursor-pointer">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 export const ROUTES = {
   // ADIMIN
-  ADMIN_HOME_UI: "admin/home",
+  ADMIN_HOME_UI: "/admin/home",
 
   // ADMINISTRATIVE-MANAGEMENT-DEPARTMENT
   ADMINISTRATIVE_MANAGEMENT_DEPTO_HOME_UI:
@@ -17,8 +17,7 @@ export const ROUTES = {
   NEP_FORM_UI: "/health_education_department/nep/create",
 
   // HEALTH-SURVEILLANCE-DEPARTMENT
-  HEALTH_SURVEILLANCE_DEPARTMENT_HOME_UI:
-    "/health_surveillance_department/home",
+  HEALTH_SURVEILLANCE_DEPARTMENT_HOME_UI: "/health_surveillance_department/home",
   VIEP_FORM_UI: "health_surveillance_department/viep/form/create",
   VISA_FORM_UI: "health_surveillance_department/visa/form/create",
 

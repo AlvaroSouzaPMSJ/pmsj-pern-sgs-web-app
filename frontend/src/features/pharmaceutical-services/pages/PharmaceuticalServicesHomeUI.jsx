@@ -66,7 +66,9 @@ const PharmaceuticalServicesHomeUI = () => {
                 <div className="grid grid-cols-1 gap-2 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xlg:grid-cols-5">
                   {/*  */}
                   <div
-                    onClick={() => navigate("/pharmaceutical_services/form/create")}
+                    onClick={() =>
+                      navigate("/pharmaceutical_services/form/create")
+                    }
                     className="border border-gray-300 rounded-md px-4 py-2 bg-green-900 hover:shadow-md hover:border-white cursor-pointer"
                   >
                     <p className="flex items-center justify-center text-white text-sm font-medium">
@@ -74,39 +76,6 @@ const PharmaceuticalServicesHomeUI = () => {
                     </p>
                   </div>
                   {/*  */}
-
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md cursor-pointer">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
-
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md cursor-pointer">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
-
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md cursor-pointer">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
-
-                  {/*  */}
-                  <div className="border border-gray-300 rounded-md px-4 py-2 bg-white hover:shadow-md cursor-pointer">
-                    <p className="flex items-center justify-center text-gray-800 text-sm font-medium">
-                      Ipsum
-                    </p>
-                  </div>
-                  {/*  */}
-
                 </div>
               </div>
             </div>

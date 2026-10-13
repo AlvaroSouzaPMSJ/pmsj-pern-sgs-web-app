@@ -24,7 +24,9 @@ import EmergencyAndUrgentCareHomeUI from "./features/emergency-and-urgency-care-
 // ----------------------------------------
 // >>> HEALTH-EDUCATION-SUPERINTENDENCY <<<
 // ----------------------------------------
-import HealthEducationDepartmentHomeUI from "./features/health-education-department/pages/HealthEducationDepartmentHomeUI.jsx";
+import HealthEducationDepartmentHomeUI from "./features/health-education-department/pages/HealthEducationDepartmentHomeUI.jsx"
+import NEPHomeUI from "./features/health-education-department/pages/NEPHomeUI.jsx";
+import NEPFormUI from "./features/health-education-department/pages/NEPFormUI.jsx";
 
 // -------------------------------------
 // >>> HEALTH-SURVEILANCE-DEPARTMENT <<<
@@ -48,6 +50,7 @@ import LABFormUI from "./features/municipal-laboratory/pages/LABFormUI.jsx";
 // >>> PHARMACEUTICAL-SERVICE <<<
 // ------------------------------
 import PharmaceuticalServicesHomeUI from "./features/pharmaceutical-services/pages/PharmaceuticalServicesHomeUI.jsx";
+import FFormUI from "./features/pharmaceutical-services/pages/PFormUI.jsx";
 
 // -------------------------
 // >>> PRIMARY ATTENTION <<<
@@ -100,6 +103,7 @@ import SystemHomePageUI from "./features/system-home/pages/SystemHomePageUI.jsx"
 // -------------
 import  UserFormUI from "./features/users/pages/UserFormUI.jsx";
 
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -121,10 +125,19 @@ const App = () => {
           element={<EmergencyAndUrgentCareHomeUI />}
         />
 
+
         {/* HEALTH-EDUCATION-SUPERINTENDENCY */}
         <Route
           path={ROUTES.HEALTH_EDUCATION_DEPARTMENT_HOME_UI}
-          element={<HealthEducationDepartmentHomeUI />}
+          element={ < HealthEducationDepartmentHomeUI />}
+        />
+        <Route
+          path={ROUTES.NEP_HOME_UI}
+          element={<NEPHomeUI />}
+        />
+        <Route
+          path={ROUTES.NEP_FORM_UI}
+          element={<NEPFormUI />}
         />
 
         {/* HEALTH-SURVEILANCE-DEPARTMENT */}
@@ -152,6 +165,10 @@ const App = () => {
         <Route
           path={ROUTES.PHARMACEUTICAL_SERVICE_HOME_UI}
           element={<PharmaceuticalServicesHomeUI />}
+        />
+        <Route
+          path={ROUTES.F_FORM_UI}
+          element={<FFormUI/>}
         />
 
         {/* PRIMARY ATTENTION */}
